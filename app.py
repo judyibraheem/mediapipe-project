@@ -50,7 +50,10 @@ def visualize(
   return image
 
 #step
-base_options = python.BaseOptions(model_asset_path=r'C:\Users\emsha\Documents\judy\AI-and-ML\ComputerVision\mediapipi-project\Models\efficientdet_lite0.tflite') # is this path correct
+BASE_DIR = Path(__file__).resolve().parent                           #base directory of the current file
+model_path = BASE_DIR / "Models" / "efficientdet_lite0.tflite"       # full path to the model file
+base_options = python.BaseOptions(model_asset_path=str(model_path)) 
+
 options = vision.ObjectDetectorOptions(base_options=base_options,
                                        score_threshold=0.5)
 detector = vision.ObjectDetector.create_from_options(options)
